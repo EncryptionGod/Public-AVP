@@ -1,0 +1,50 @@
+import os
+
+def print_apap_logo():
+    apap_logo = """
+       \033[91m _____  _____ \033[0m
+      \033[91m|_   _||_   _|\033[0m
+        \033[91m| |    | |\033[0m  
+        \033[91m| |    | |\033[0m  
+       \033[91m _| |_  _| |_\033[0m 
+      \033[91m|_____||_____|\033[0m
+    """
+    print(apap_logo)
+
+def print_menu():
+    print_apap_logo()  # Adding APAP logo
+    print("\nMenu:")
+    print("1 - Spoofer")
+    print("2 - Exit")
+
+def change_ip_address():
+    print("Getting new IP address...")
+    # Replace this line with the code to change the IP address
+    new_ip_address = "170.67.165.182"
+    return new_ip_address
+
+def run_command_with_new_ip(command, ip_address):
+    print(f"Running command '{command}' with IP address: {ip_address}")
+    # Replace this line with the code to run the command with the specified IP address
+    os.system(command)
+
+if __name__ == "__main__":
+    while True:
+        print_menu()
+        choice = input("Enter your choice: ")
+
+        if choice == "1":
+            new_ip_address = change_ip_address()
+        elif choice == "2":
+            print("Exiting...")
+            break
+        else:
+            print("Invalid choice. Please try again.")
+            continue
+
+        while True:
+            command = input("Enter a command to run (type 'exit' to return to the menu): ")
+            if command.lower() == "exit":
+                break
+            else:
+                run_command_with_new_ip(command, new_ip_address)
